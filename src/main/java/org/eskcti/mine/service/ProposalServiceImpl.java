@@ -2,6 +2,7 @@ package org.eskcti.mine.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.eskcti.mine.client.ProposalRestClient;
 import org.eskcti.mine.dto.ProposalDetailDTO;
@@ -13,17 +14,17 @@ public class ProposalServiceImpl implements ProposalService{
     ProposalRestClient proposalRestClient;
 
     @Override
-    public ProposalDetailDTO findFullProposal(long id) {
-        return null;
+    public ProposalDetailDTO findFullProposal(long proposalId) {
+        return proposalRestClient.getProposalDetailsById(proposalId);
     }
 
     @Override
-    public void createNewProposal(ProposalDetailDTO proposalDetailDTO) {
-
+    public Response createNewProposal(ProposalDetailDTO proposalDetailDTO) {
+        return proposalRestClient.createProposal(proposalDetailDTO);
     }
 
     @Override
-    public void removeProposal(long id) {
-
+    public Response removeProposal(long id) {
+        return proposalRestClient.removeProposal(id);
     }
 }

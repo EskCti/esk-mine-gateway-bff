@@ -1,13 +1,14 @@
 package org.eskcti.mine.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ws.rs.core.Response;
 import org.eskcti.mine.dto.ProposalDetailDTO;
 
 @ApplicationScoped
 public interface ProposalService {
     ProposalDetailDTO findFullProposal(long id);
 
-    void createNewProposal(ProposalDetailDTO proposalDetailDTO);
+    Response createNewProposal(ProposalDetailDTO proposalDetailDTO);
 
-    void removeProposal(long id);
+    Response removeProposal(long id);
 }
